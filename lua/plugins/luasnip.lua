@@ -8,7 +8,7 @@ return {
         "main",
         [[
 def main():
-    $1
+    $0
 if __name__ == "__main__":
     main()
           ]]
@@ -16,7 +16,14 @@ if __name__ == "__main__":
       ls.parser.parse_snippet(
         "fun",
         [[
-def fun($1) -> $2:
+def $1($2) -> $3:
+    $4
+          ]]
+      ),
+      ls.parser.parse_snippet(
+        "cls",
+        [[
+class $1($2):
     $3
           ]]
       ),
