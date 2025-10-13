@@ -13,6 +13,10 @@ return {
     "folke/which-key.nvim",
     opts = { preset = "modern" },
   },
+  {
+    "folke/noice.nvim",
+    presets = { inc_rename = true },
+  },
   { "nvim-tree/nvim-web-devicons", opts = {} },
   { "nvim-mini/mini.icons", version = false },
 }

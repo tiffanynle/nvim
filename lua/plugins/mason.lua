@@ -1,4 +1,4 @@
 return {
   "mason-org/mason.nvim",
-  opts = { PATH = "append", ensure_installed = { "sqlfluff", "tinymist" } },
+  opts = { PATH = "append", ensure_installed = { "sqlfluff" } },
 }
