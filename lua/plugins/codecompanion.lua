@@ -6,6 +6,7 @@ return {
   opts = {
     adapters = {
       http = {
+        -- local llama.cpp instance
         ["llama.cpp"] = function()
           return require("codecompanion.adapters").extend("openai_compatible", {
             name = "llama.cpp",
@@ -18,6 +19,7 @@ return {
             env = {
               url = "http://localhost:8080",
               chat_url = "/v1/chat/completions",
+              api_key = "LLAMA_API_KEY",
             },
             handlers = {
               parse_message_meta = function(self, data)
@@ -30,6 +32,22 @@ return {
                 end
                 return data
               end,
+            },
+          })
+        end,
+        -- ollama cloud instance
+        ollama = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            env = {
+              url = "https://ollama.com",
+              api_key = "OLLAMA_API_KEY",
+            },
+            headers = {
+              ["Content-Type"] = "application/json",
+              ["Authorization"] = "Bearer ${api_key}",
+            },
+            parameters = {
+              sync = true,
             },
           })
         end,
